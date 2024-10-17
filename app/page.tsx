@@ -1,7 +1,6 @@
 "use client";
 import { LeftBarNav } from "./components/LeftBarNav";
 import { useActiveSection } from "./hooks/useActiveSection";
-import { debounce } from "./utils/utils";
 
 const pageSections = [
   "home",
@@ -19,16 +18,7 @@ export default function Home() {
       number,
       React.Dispatch<React.SetStateAction<number>>
     ];
-  const updateURLWithDebounce = debounce(() => {
-    updateURL(activeSection);
-  });
-  const updateURL = (sectionIndex: number) => {
-    const sectionId = pageSections[sectionIndex].toLowerCase();
-    const newUrl = `${window.location.origin}/#${sectionId}`;
 
-    // Update the URL without reloading
-    window.history.pushState(null, "", newUrl);
-  };
   return (
     <div>
       <LeftBarNav
@@ -45,7 +35,6 @@ export default function Home() {
           if (scrollIndex !== activeSection) {
             setActiveSection(scrollIndex);
           }
-          updateURLWithDebounce();
         }}
       >
         <section

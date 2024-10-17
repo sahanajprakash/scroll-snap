@@ -6,6 +6,15 @@ interface LeftBarNavProps {
 export function LeftBarNav({ sections, activeSection }: LeftBarNavProps) {
   console.log(activeSection);
 
+  const updateURL = (sectionIndex: number) => {
+    const sectionId = sections[sectionIndex].toLowerCase();
+    const newUrl = `${window.location.origin}/#${sectionId}`;
+
+    // Update the URL without reloading
+    window.history.pushState(null, "", newUrl);
+  };
+  updateURL(activeSection);
+
   const handleSectionClick = (sectionIndex: number) => {
     const sectionId = sections[sectionIndex].toLowerCase();
     const element = document.getElementById(sectionId);
