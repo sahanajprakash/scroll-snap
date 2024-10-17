@@ -1,6 +1,7 @@
 "use client";
 import { LeftBarNav } from "./components/LeftBarNav";
 import { useActiveSection } from "./hooks/useActiveSection";
+import { debounce } from "./utils/utils";
 
 const pageSections = [
   "home",
@@ -18,7 +19,9 @@ export default function Home() {
       number,
       React.Dispatch<React.SetStateAction<number>>
     ];
-
+  const updateURLWithDebounce = debounce(() => {
+    updateURL(activeSection);
+  });
   const updateURL = (sectionIndex: number) => {
     const sectionId = pageSections[sectionIndex].toLowerCase();
     const newUrl = `${window.location.origin}/#${sectionId}`;
@@ -42,16 +45,14 @@ export default function Home() {
           if (scrollIndex !== activeSection) {
             setActiveSection(scrollIndex);
           }
-          updateURL(activeSection);
+          updateURLWithDebounce();
         }}
       >
         <section
           id="home"
           className="min-h-screen snap-center snap-always pt-[50px]"
         >
-          <h1 className="text-6xl text-black">
-            01 HOME
-          </h1>
+          <h1 className="text-6xl text-black">01 HOME</h1>
 
           <ul className="flex flex-col">
             <li className="text-2xl text-black">
@@ -81,8 +82,7 @@ export default function Home() {
             dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
             aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
             eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-            qui dolorem ipsum quia dolor sit amet, consectetur.
-            pariatur?
+            qui dolorem ipsum quia dolor sit amet, consectetur. pariatur?
           </p>
           <br />
           <p>Autor del poema: Juan de Dios Peza</p>
@@ -100,7 +100,7 @@ export default function Home() {
             dolores et quas molestias excepturi sint occaecati cupiditate non
             provident, similique sunt in culpa qui officia deserunt mollitia
             animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-            est et expedita distinctio. 
+            est et expedita distinctio.
           </p>
           <br />
           <p>Autor del poema: Coral Bracho</p>
