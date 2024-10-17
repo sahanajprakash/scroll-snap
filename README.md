@@ -7,6 +7,8 @@ A scroll-snap template built using Next.js. This template provides a smooth scro
 Check out the live version of this project on CodeSandbox:
 
 [Live Preview](https://codesandbox.io/p/github/sahanajprakash/scroll-snap/main?import=true&embed=1)
+<a href="https://codesandbox.io/p/github/sahanajprakash/scroll-snap/main?import=true&embed=1" target="_blank">Live Preview</a>
+
 
 ## Getting Started
 
