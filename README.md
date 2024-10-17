@@ -8,6 +8,7 @@ Check out the live version of this project on CodeSandbox:
 
 [Live Preview](https://codesandbox.io/p/github/sahanajprakash/scroll-snap/main?import=true&embed=1)
 
+
 ## Getting Started
 
 ### Prerequisites
